@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask,request
+from flask import Flask,request,jsonify
 
 api=Flask(__name__)
 
