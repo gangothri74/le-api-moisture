@@ -16,7 +16,7 @@ def home():
 def predict():
     data = request.args.get('data')
     
-    data = [[int(data)]]
+    data = int(data)
     response = le.predict(data)[0]
     return response
 
