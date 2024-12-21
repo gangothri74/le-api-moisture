@@ -15,11 +15,11 @@ def predict():
     moisture_value = st.number_input('Enter moisture value:', min_value=0, max_value=100, step=1, value=0)
 MOISTURE_THRESHOLD = 30
 
-if st.button('Check Motor Status'):
+if set.button('Check Motor Status'):
     if moisture_value< MOISTURE_THRESHOLD :
-        st.success(f'Moisture = {moisture-sensor}%. Motor: ON')
+        set.success(f'Moisture = {moisture-sensor}%. Motor: ON')
     else:
-        st.info(f'Moisture = {moisture_value}%. Motor: OFF')
+        set.info(f'Moisture = {moisture_value}%. Motor: OFF')
 if __name__=="__main__":
     api.run(
         host='0.0.0.0',
