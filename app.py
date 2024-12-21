@@ -14,17 +14,11 @@ def home():
 
 @api.route('/predict',methods=['GET'])
 def predict():
-    data = request.args.get('moisture_value')
-    if data is not None:
-        data = [[int(data)]]
-        response = le.predict(data)[0]
-        if response == 1:
-            return "Motor: ON"
-        else:
-            return "Motor: OFF
+    data = request.args.get('data')
+    data = [[int(data)]]
+    response = le.predict(data)[0]
+    return str(response)
 
- response = le.predict(data)[0]
-    return response
 if __name__=="__main__":
     api.run(
         host='0.0.0.0',
