@@ -22,6 +22,6 @@ if st.button('Check Motor Status'):
         st.info(f'Moisture = {moisture_value}%. Motor: OFF')
 if __name__=="__main__":
     api.run(
-        host='0.0.0.0'
+        host='0.0.0.0',
         port=2000
     )
