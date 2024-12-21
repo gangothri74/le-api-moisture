@@ -15,9 +15,10 @@ def home():
 @api.route('/predict',methods=['GET'])
 def predict():
     data = request.args.get('data')
+    
     data = [[int(data)]]
     response = le.predict(data)[0]
-    return str(response)
+    return response
 
 if __name__=="__main__":
     api.run(
