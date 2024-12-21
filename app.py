@@ -14,7 +14,7 @@ def home():
 
 @api.route('/predict',methods=['GET'])
 def predict():
-    moisture_value = request.args.get('moisture_value')
+    moisture_value = int(request.args.get('moisture_value'))
 
 
     if moisture_value is None:
