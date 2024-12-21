@@ -14,7 +14,7 @@ def home():
 
 @api.route('/predict',methods=['GET'])
 def predict():
-    data = request.args.get('data')
+    data = request.args.get('moisture')
     
     data = int(data)
     x=[[data]]
