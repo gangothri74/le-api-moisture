@@ -12,14 +12,19 @@ def home():
 
 @api.route('/predict',methods=['GET'])
 def predict():
-    moisture_value = st.number_input('Enter moisture value:', min_value=0, max_value=100, step=1, value=0)
-MOISTURE_THRESHOLD = 30
+    moisture_value = request.args.get('moisture_value', type=int)
 
-if st.button('Check Motor Status'):
-    if moisture_value< MOISTURE_THRESHOLD :
-        st.success(f'Moisture = {moisture-sensor}%. Motor: ON')
+
+    if moisture_value is None:
+        return jsonify({'error': 'moisture_value is required'}), 400
+
+    
+    if moisture_value < MOISTURE_THRESHOLD:
+        return jsonify({'moisture_value': moisture_value, 'motor_status': 'ON'})
     else:
-        st.info(f'Moisture = {moisture_value}%. Motor: OFF')
+        return jsonify({'moisture_value': moisture_value, 'motor_status': 'OFF'})
+
+
 if __name__=="__main__":
     api.run(
         host='0.0.0.0',
