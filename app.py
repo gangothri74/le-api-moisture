@@ -17,7 +17,7 @@ def predict():
     moisture_value = request.args.get('moisture_value', type=int)
 
 if moisture_value is None:
-        return jsonify({'error': 'moisture_value is required'}), 400
+        jsonify({'error': 'moisture_value is required'}), 400
 
 return jsonify({'moisture_value': moisture_value, 'motor_status': 'ON' if moisture_value < 50 else 'OFF'})
 response=le.predict(data)[0]
