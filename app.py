@@ -3,7 +3,7 @@ from flask import Flask,request,jsonify
 
 api=Flask(__name__)
 
-MOISTURE_THRESHOLD=120
+
 
 with  open('le.pkl','rb') as f:
     le=pickle.load(f)
@@ -14,10 +14,14 @@ def home():
 
 @api.route('/predict',methods=['GET'])
 def predict():
+    data = request.args.get('moisture_value')
     if data is not None:
-        return "Motor: OFF"
-    if data is >100:
-        return "Motor: ON"
+        data = [[int(data)]]
+        response = le.predict(data)[0]
+        if response == 1:
+            return "Motor: ON"
+        else:
+            return "Motor: OFF
 
  response = le.predict(data)[0]
     return response
