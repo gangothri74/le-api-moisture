@@ -14,10 +14,13 @@ def home():
 
 @api.route('/predict',methods=['GET'])
 def predict():
-    data = request.args.get('data')
-    data = [[int(data)]]
-    response = le.predict(data)[0]
-    return str(response)
+    if data is not None:
+        return "Motor: OFF"
+    if data is >100:
+        return "Motor: ON"
+
+ response = le.predict(data)[0]
+    return response
 if __name__=="__main__":
     api.run(
         host='0.0.0.0',
