@@ -17,7 +17,8 @@ def predict():
     data = request.args.get('data')
     
     data = int(data)
-    response = le.predict(data)[0]
+    x=[[data]]
+    response = le.predict(x)[0]
     return response
 
 if __name__=="__main__":
